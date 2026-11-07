@@ -23,7 +23,7 @@ python -m pip install -r requirements-inference.txt
 python scripts/predict.py --weights models/watervision_yolo26n_full_v1_best.onnx --source path/to/image.jpg --imgsz 320
 ```
 
-The upload interface is available with `python scripts/demo_app.py`; setup details are in [Local inference and demo](docs/local_demo.md). For a Colab export from Drive, see [`scripts/export_colab.py`](scripts/export_colab.py).
+The interactive local interface supports image upload, per-class score visualization, and optional comparison with a known FNU reference. Start it with `python scripts/demo_app.py`; setup details are in [Local inference and demo](docs/local_demo.md). For a Colab export from Drive, see [`scripts/export_colab.py`](scripts/export_colab.py).
 
 ## Experiment 02: family-aware cross-validation
 
