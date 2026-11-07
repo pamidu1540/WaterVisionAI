@@ -54,3 +54,13 @@ The reported scores are transcribed from the referenced conversation summary. Tr
 ## Citation
 
 If you use this work, cite it as an experimental WaterVision AI project and cite the original Turbidivision dataset according to its verified license and citation guidance. Dataset citation details remain to be confirmed.
+## Export a trained checkpoint from Colab
+
+Open `scripts/export_colab.py` in the repository, paste it into a Colab code cell, and run it after authorizing Drive access. The script offers two explicit choices near the top:
+
+- `MODEL_KIND = "full"` exports the initial Experiment 01 checkpoint from `models/yolo26n_full_v1/weights/best.pt`.
+- `MODEL_KIND = "cv-fold2"` exports only the fold 2 checkpoint from `models/experiment02/yolo26n_cv_fold2_v2/weights/best.pt`.
+
+Choose the run you want by changing `MODEL_KIND`. It saves a named copy under `WaterVisionAI/exports/`, prints the SHA-256 checksum, and starts a browser download to your computer. If the source checkpoint does not exist in Drive, the script stops with the missing path. The CV fold checkpoint is one of three separately trained models, not a unified model. Its 91.11% validation result is not its held-out test result; fold 2 held-out accuracy was 50.21%.
+
+The notebook lists earlier Experiment 01 checkpoints too (`yolo26n_turbidity_v1`), but this exporter defaults to the later `yolo26n_full_v1` run. Do not change the paths without confirming which checkpoint you intend to export.
