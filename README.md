@@ -19,7 +19,7 @@ The artifact is a single full-run model. It is separate from the three fold-spec
 ## Local inference
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install -r requirements-inference.txt
 python scripts/predict.py --weights models/watervision_yolo26n_full_v1_best.onnx --source path/to/image.jpg --imgsz 320
 ```
 
