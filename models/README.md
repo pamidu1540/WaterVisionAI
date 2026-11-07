@@ -1,3 +1,3 @@
-# Checkpoints and data
+# Model artifacts
 
-This repository intentionally does not track raw dataset images or model weights. Add only after dataset terms and redistribution rights are verified. Use `.gitignore` to keep local files private. For any released checkpoint, document fold identity, training split, source license status, SHA-256, and intended use. Never rename a fold checkpoint as a pooled model.
+`watervision_yolo26n_full_v1_best.onnx` is the published Experiment 01 model artifact. See the root README, model card, and license notes. Raw dataset images are not included. Add any future checkpoints only with a clear run/fold identity and corresponding license and evaluation notes.
