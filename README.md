@@ -10,7 +10,7 @@ The ONNX export for the **Experiment 01 full run** is included at [`models/water
 - Training input size: 320 × 320
 - Classes: `0_low` (<5 FNU), `1_moderate` (5 to <20 FNU), `2_high` (≥20 FNU)
 - SHA-256: `1f91883fd763ac87a25edb25489b66f4c3060eaa0dccf7a58bc78f5043b00aeb`
-- [Local image test and demo capture](docs/demo_capture.md)
+- [Local image test and demo](docs/local_demo.md)
 - For a fresh export from Drive, see [`scripts/export_colab.py`](scripts/export_colab.py).
 
 This full-run ONNX file does **not** inherit the pooled Experiment 02 CV results below. Those results summarize three different fold-specific models.
@@ -22,7 +22,7 @@ python -m pip install -r requirements.txt
 python scripts/predict.py --weights models/watervision_yolo26n_full_v1_best.onnx --source path/to/image.jpg --imgsz 320
 ```
 
-For an upload-based demo, run `python scripts/demo_app.py` and open the local address printed in the terminal. It binds to `127.0.0.1`; uploaded images are processed on your computer. See [demo and capture instructions](docs/demo_capture.md).
+For an upload-based demo, run `python scripts/demo_app.py` and open the local address printed in the terminal. It binds to `127.0.0.1`; uploaded images are processed on your computer. See [demo instructions](docs/local_demo.md).
 
 ## Experiment 02 cross-validation results
 
@@ -51,10 +51,11 @@ This repository is licensed under **GNU AGPL v3.0**. The project uses Ultralytic
 - `scripts/train.py`, `scripts/predict.py`, `scripts/export_colab.py`, `scripts/demo_app.py`: training, local inference, Drive export, and local upload demo.
 - `docs/methodology.md`: family-aware evaluation protocol and reproducibility notes.
 - `docs/dataset.md`, `docs/licensing.md`: attribution and license separation.
-- `docs/demo_capture.md`: local user guide and LinkedIn capture outline.
+- `docs/local_demo.md`: local inference and demo instructions.
 - `docs/model_card.md`: intended use and limitations.
 - `docs/results.md`, `results/summary.json`: reported CV results and scope cautions.
 
 ## Safety and limitations
 
 This model predicts experimental image categories only. It does not evaluate potability, pathogens, chemical contamination, regulatory compliance, or field safety. It must not guide drinking-water decisions. A calibrated turbidity meter and appropriate water-quality tests are required for real measurements and safety decisions.
+
