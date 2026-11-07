@@ -1,31 +1,33 @@
-# Local image testing and demo
+# Local inference and demo
 
-## Run one image from the command line
+## Command-line inference
 
-Install Python 3.10 or newer, then from the repository directory:
+From the repository root, create a Python virtual environment and install the pinned minimum dependencies:
 
 ```bash
 python -m venv .venv
 ```
 
-Activate the environment (`.venv\\Scripts\\activate` on Windows, or `source .venv/bin/activate` on macOS/Linux), then install dependencies:
+Activate it (`.venv\\Scripts\\activate` on Windows or `source .venv/bin/activate` on macOS/Linux) and install requirements:
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-Run the exported full-run ONNX model against an image you have permission to use:
+Run inference on an image file:
 
 ```bash
 python scripts/predict.py --weights models/watervision_yolo26n_full_v1_best.onnx --source path/to/image.jpg --imgsz 320
 ```
 
-The script prints scores for the three categories. This model reports categories, not a calibrated FNU reading. It is the Experiment 01 full-run artifact; Experiment 02 pooled cross-validation metrics belong to three different fold models.
+The output contains the model's scores for each category. The artifact predicts categories and does not return a calibrated FNU reading. Experiment 02 cross-validation scores describe separate fold models.
 
-## Launch the local upload demo
+## Upload-based local interface
+
+Launch the local interface with:
 
 ```bash
 python scripts/demo_app.py
 ```
 
-Open the local address printed in the terminal (normally `http://127.0.0.1:7860`) and choose an image. The app binds to this computer only and does not create a public Gradio share link. Uploaded images are processed locally by the model. Do not use the app to make drinking-water safety decisions.
+Open the loopback address printed by Gradio (default `http://127.0.0.1:7860`) and select an image. The application binds to `127.0.0.1` with Gradio sharing disabled; inference runs on the host machine. The output is an experimental category classification, not a potability or water-safety result.

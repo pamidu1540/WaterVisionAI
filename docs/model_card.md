@@ -1,32 +1,33 @@
 # Model card: WaterVision AI YOLO26n-cls
 
-## Artifact
+## Model identity
 
-The repository contains `models/watervision_yolo26n_full_v1_best.onnx`, an ONNX export supplied by the project owner. It corresponds by filename and notebook path to the Experiment 01 full-run checkpoint `models/yolo26n_full_v1/weights/best.pt`.
-
-- Architecture/task: Ultralytics YOLO26n classification (YOLO26n-cls)
-- Input used in training/export: 320 × 320 RGB images
-- Classes: low (<5 FNU), moderate (5 to <20 FNU), high (≥20 FNU)
-- Artifact size: 5.88 MiB
+- Architecture and task: Ultralytics YOLO26n classification (YOLO26n-cls)
+- Artifact: `models/watervision_yolo26n_full_v1_best.onnx`
+- Run: Experiment 01, `yolo26n_full_v1`
+- Input: 320 × 320 pixels
+- Labels: low (<5 FNU), moderate (5 to <20 FNU), high (≥20 FNU)
+- File size: 5.88 MiB
 - SHA-256: `1f91883fd763ac87a25edb25489b66f4c3060eaa0dccf7a58bc78f5043b00aeb`
-- Exported ONNX file metadata/runtime parity have not been independently validated in this workspace.
 
-## Training provenance
+The ONNX file was supplied as the Experiment 01 export. Its runtime parity against the source PyTorch checkpoint was not independently evaluated as part of repository preparation.
 
-Notebook training configuration for `yolo26n_full_v1`: pretrained `yolo26n-cls.pt` initialization; 50 epoch maximum; image size 320; batch 16; SGD with initial learning rate 0.005 and cosine schedule; weight decay 0.0005; patience 10; seed 42; deterministic mode enabled; AMP disabled; automatic augmentation disabled; random erasing 0.0. The notebook describes a site-separated train/validation/test split. These are notebook settings, not a verified record of the exact run execution or checkpoint provenance beyond the supplied filename.
+## Training configuration
 
-## Intended use and exclusions
+The notebook specifies pretrained `yolo26n-cls.pt` initialization, up to 50 epochs, batch size 16, image size 320, SGD, initial learning rate 0.005, cosine learning-rate schedule, weight decay 0.0005, patience 10, seed 42, deterministic mode, AMP disabled, automatic augmentation disabled, and random erasing 0.0. The notebook describes a site-separated train/validation/test split. The exact checkpoint execution record was not available for independent audit.
 
-Educational and research demonstration of image-based three-category turbidity classification under the source project's study conditions. Not for drinking-water potability, pathogen or chemical assessment, regulatory compliance, public-health decisions, or field safety.
+## Intended application
 
-## Evaluation scope
+Research and educational evaluation of image-based classification into three experimental turbidity categories.
 
-The 55.29% accuracy, 49.62% balanced accuracy, and 0.4965 macro F1 are pooled out-of-fold metrics for three separate Experiment 02 fold models. They do not measure this Experiment 01 full-run ONNX artifact. No verified held-out metrics for this exact full-run ONNX file are available in this handoff.
+## Evaluation
 
-## Risks and limitations
+The reported 55.29% accuracy, 49.62% balanced accuracy, and 0.4965 macro F1 are pooled out-of-fold results for the separate Experiment 02 fold models. They are not performance estimates for this Experiment 01 ONNX artifact. A verified held-out metric report for this exact artifact was not available.
 
-Performance may depend on camera, lighting, container, location, background, and experiment-family conditions. The model can underestimate high turbidity. Class probabilities are not calibrated FNU measurements. Use a calibrated turbidity meter and appropriate water testing for real decisions.
+## Limitations
+
+The model predicts image categories rather than calibrated FNU measurements. Performance may vary with camera, illumination, container, location, background, and experiment family. The cross-validation fold accuracies ranged from 48.44% to 66.23%; the source report also indicates frequent confusion between moderate and high turbidity. No field validation or potability assessment is reported.
 
 ## License
 
-The project follows AGPL-3.0 in light of Ultralytics' published licensing statement for trained models; the source dataset record declares AGPL-3.0-or-later. See [`../LICENSE`](../LICENSE) and [`licensing.md`](licensing.md). This card is not legal advice.
+The project follows AGPL-3.0 based on the identified Ultralytics terms for trained models. The dataset record declares AGPL-3.0-or-later. See [LICENSE](../LICENSE) and [licensing notes](licensing.md).

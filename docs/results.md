@@ -1,22 +1,20 @@
 # Results
 
-The source notebook and conversation reported two distinct sets of experiments.
+## Experiment 02: family-aware cross-validation
 
-## Experiment 02: three-fold family-aware cross-validation
-
-| Evaluation | N | Accuracy | Macro F1 |
+| Evaluation | Images | Accuracy | Macro F1 |
 |---|---:|---:|---:|
 | Fold 0 held-out | 231 | 66.23% | 0.6159 |
 | Fold 1 held-out | 192 | 48.44% | 0.3718 |
 | Fold 2 held-out | 239 | 50.21% | 0.4565 |
 | Pooled out-of-fold | 662 | 55.29% | 0.4965 |
 
-Pooled balanced accuracy: 49.62%. Majority-class baseline accuracy: 48.79%. Reported correct predictions: 366/662. Fold 2 validation accuracy of 91.11% is not its test accuracy.
+Pooled balanced accuracy is 49.62%. Majority-class accuracy is 48.79%, and the project report records 366 correct predictions out of 662. The reported 91.11% validation accuracy for fold 2 is separate from its 50.21% held-out test accuracy.
 
-These metrics refer to three fold-specific checkpoints (`yolo26n_cv_fold0_v2`, `fold1_v2`, `fold2_v2`), not the full-run model distributed as ONNX.
+These metrics correspond to `yolo26n_cv_fold0_v2`, `yolo26n_cv_fold1_v2`, and `yolo26n_cv_fold2_v2`. They do not evaluate the Experiment 01 full-run ONNX artifact.
 
-## Experiment 01 full run
+## Experiment 01: full run
 
-The supplied notebook names a separate `yolo26n_full_v1` checkpoint trained with a site-separated split. The supplied ONNX artifact corresponds by name/path to that run, but this repository does not have a verified metrics file for that exact artifact. Do not attribute Experiment 02 pooled metrics to it.
+The notebook specifies `yolo26n_full_v1` and a site-separated train/validation/test split. The ONNX artifact in this repository is identified as the export of that run. A verified held-out metrics file for this artifact was not available.
 
-The values above are transcribed from the project record, not independently recomputed from the prediction CSVs in this workspace. Original fold prediction files and evaluation code are needed to reproduce them independently.
+Values in this document are transcribed from project outputs; the original prediction CSV files were not available here for recalculation.

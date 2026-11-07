@@ -1,15 +1,15 @@
-# Licensing notes
+# Licensing
 
-## Project code
+## Repository code and model
 
-This repository includes `LICENSE` with the GNU Affero General Public License version 3.0. The project uses Ultralytics YOLO26 code and was trained from an Ultralytics YOLO26n-cls checkpoint. Ultralytics' published licensing page says its trained models fall under AGPL-3.0 by default and describes AGPL-3.0 or an Ultralytics Enterprise License as the two routes for projects using its code/models. This repository follows the AGPL route and does not assert an Enterprise license.
+The repository includes the GNU Affero General Public License v3.0 in `LICENSE`. The training and inference workflow uses Ultralytics YOLO26 code and a YOLO26n-cls model. Ultralytics' published terms state that trained models are AGPL-3.0 by default and identify AGPL-3.0 or an Ultralytics Enterprise License as licensing routes for projects using its code and models. This project is distributed under the AGPL route and does not claim an Enterprise License.
 
-AGPL obligations can include providing corresponding source to recipients and network users under the license. Read the full license and seek qualified advice for a specific redistribution or deployment scenario. The ONNX format is an export format, not a license conversion.
+The ONNX file is an exported model artifact; export format does not change the identified upstream license. AGPL distribution and network-use obligations are defined in the license text and are not restated here.
 
 ## Dataset
 
-The separate Turbidivision dataset record declares AGPL-3.0-or-later. Dataset attribution and reuse notes are in [`dataset.md`](dataset.md). The article about the dataset is CC BY 4.0, but that is the article license, not a replacement license for the dataset files.
+The Turbidivision dataset record declares AGPL-3.0-or-later. Its citation and provenance are documented in [dataset.md](dataset.md). The related article is separately CC BY 4.0.
 
-## MIT is not claimed
+## License scope
 
-The project, dataset, and model are not offered under MIT. Adding an MIT license file would incorrectly suggest rights that conflict with the upstream licensing information. The repository's `LICENSE` governs this project subject to upstream components and data terms; it cannot override third-party licenses.
+The repository license applies to project materials subject to third-party rights and terms. It does not replace source licenses. MIT is not asserted for this project, its dataset, or the model artifact.

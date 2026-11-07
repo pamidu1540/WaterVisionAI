@@ -1,31 +1,21 @@
-# Dataset provenance, attribution, and license
+# Dataset provenance and attribution
 
-## Source and credit
+## Source
 
-The supplied Colab notebook downloads the upstream Turbidivision GitHub release tagged `v1.0.0` from `YellowTeamRobot/AI_Turbidity_Honors2023-4`. It reads the official master label table and image archives, then keeps the 662 images with usable FNU labels for this project.
+The supplied Colab notebook downloads the `v1.0.0` release from [YellowTeamRobot/AI_Turbidity_Honors2023-4](https://github.com/YellowTeamRobot/AI_Turbidity_Honors2023-4). It reads the master label table and image archives and selects 662 images with usable FNU labels.
 
-The cited source dataset is:
+## Dataset citation
 
-> Rudy, I. M., & Wilson, M. J. (2024). *Underwater Image/Turbidity Dataset* (1.0.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.10951021
+Rudy, I. M., & Wilson, M. J. (2024). *Underwater Image/Turbidity Dataset* (1.0.0) [Data set]. Zenodo. [https://doi.org/10.5281/zenodo.10951021](https://doi.org/10.5281/zenodo.10951021).
 
-Zenodo's record metadata identifies the dataset license as **AGPL-3.0-or-later**. The upstream project repository also declares AGPL-3.0. Preserve the dataset citation and license notice in any permitted redistribution. This repository does not include the raw images or a derived dataset archive.
+The Zenodo record metadata declares AGPL-3.0-or-later. The upstream project repository also declares AGPL-3.0. Raw images and derived image archives are not included in this repository.
 
-Related paper:
+## Related publication
 
-> Rudy, I. M., & Wilson, M. J. (2024). Turbidivision: a machine vision application for estimating turbidity from underwater images. *PeerJ, 12*, e18254. https://doi.org/10.7717/peerj.18254
+Rudy, I. M., & Wilson, M. J. (2024). Turbidivision: a machine vision application for estimating turbidity from underwater images. *PeerJ, 12*, e18254. [https://doi.org/10.7717/peerj.18254](https://doi.org/10.7717/peerj.18254). The article is published under CC BY 4.0. This publication license is distinct from the dataset record's license.
 
-The paper is distributed under CC BY 4.0. That license applies to the paper; do not treat it as a substitute for the separate dataset record's AGPL-3.0-or-later license.
+## Label mapping and preprocessing
 
-## Project labels and transformation
+The project maps source FNU labels into three classes: low (<5 FNU), moderate (5 to <20 FNU), and high (≥20 FNU). Images are converted to RGB with EXIF orientation applied, resized within 1024 × 1024 pixels while preserving aspect ratio, and saved as JPEG at quality 92. Experiment 02 assigns mapped experiment families to separate CV folds.
 
-The notebook first uses the source's published fine-grained FNU bins for auditing, then creates three project classes from measured FNU:
-
-- `low`: FNU < 5
-- `moderate`: 5 ≤ FNU < 20
-- `high`: FNU ≥ 20
-
-Images are converted to RGB, EXIF orientation is applied, resized to fit within 1024 × 1024 while preserving aspect ratio, and saved as JPEG (quality 92). The repository does not publish those transformed images. For Experiment 02, groups were mapped to experiment families and held together across three folds.
-
-## Redistribution and limitations
-
-The notebook's source identifies the upstream repository and release, while the Zenodo dataset record declares AGPL-3.0-or-later. Keep the source notices and citation with any distribution. The dataset is not bundled here. No independent image-by-image rights audit was performed; if a source image contains third-party material or separate restrictions, those may still apply. Do not relicense the data under MIT or CC BY based solely on the paper license.
+The dataset record and upstream repository provide the applicable source terms. No independent item-level rights audit was performed for material embedded in individual images.
